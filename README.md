@@ -1,1 +1,155 @@
-# Azure Databricks Workshop
+![](.//media/image1.png)
+
+**ELT with Azure Data Bricks**
+
+Hands-on lab step-by-step
+
+Feb 2020
+
+Information in this document, including URL and other Internet Web site
+references, is subject to change without notice. Unless otherwise noted,
+the example companies, organizations, products, domain names, e-mail
+addresses, logos, people, places, and events depicted herein are
+fictitious, and no association with any real company, organization,
+product, domain name, e-mail address, logo, person, place or event is
+intended or should be inferred. Complying with all applicable copyright
+laws is the responsibility of the user. Without limiting the rights
+under copyright, no part of this document may be reproduced, stored in
+or introduced into a retrieval system, or transmitted in any form or by
+any means (electronic, mechanical, photocopying, recording, or
+otherwise), or for any purpose, without the express written permission
+of Microsoft Corporation.
+
+Microsoft may have patents, patent applications, trademarks, copyrights,
+or other intellectual property rights covering subject matter in this
+document. Except as expressly provided in any written license agreement
+from Microsoft, the furnishing of this document does not give you any
+license to these patents, trademarks, copyrights, or other intellectual
+property.
+
+The names of manufacturers, products, or URLs are provided for
+informational purposes only and Microsoft makes no representations and
+warranties, either expressed, implied, or statutory, regarding these
+manufacturers or the use of the products with any Microsoft
+technologies. The inclusion of a manufacturer or product does not imply
+endorsement of Microsoft of the manufacturer or product. Links may be
+provided to third party sites. Such sites are not under the control of
+Microsoft and Microsoft is not responsible for the contents of any
+linked site or any link contained in a linked site, or any changes or
+updates to such sites. Microsoft is not responsible for webcasting or
+any other form of transmission received from any linked site. Microsoft
+is providing these links to you only as a convenience, and the inclusion
+of any link does not imply endorsement of Microsoft of the site or the
+products contained therein.
+
+© 2018 Microsoft Corporation. All rights reserved.
+
+Microsoft and the trademarks listed at
+<https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx>
+are trademarks of the Microsoft group of companies. All other trademarks
+are property of their respective owners.
+
+# Contents
+
+[Azure Databricks Hands-on Lab 1](#azure-databricks-hands-on-lab)
+
+[Abstract and learning objectives 1](#abstract-and-learning-objectives)
+
+[Before the Hands-on Lab: 1](#_Toc33615739)
+
+# Azure Databricks Hands-on Lab
+
+## Abstract and learning objectives 
+
+In this workshop, you will deploy an Azure Databricks workspace and
+experiment with access data from Azure Storage in form of CSV or Parquet
+files and transform this data using PySpark and SparkSQL.
+
+<span id="_Toc33615739" class="anchor"></span>
+
+## Before the Hands-on Lab:
+
+**Note on naming conventions:** If you are using a shared environment
+(subscription) follow this naming convention to make sure your resources
+are easily identifiable from other participants.
+***<span class="underline">hol-\<your-name\>-\<resource-name\></span>***
+
+You will be provisioning the below resources:
+
+1.  Resource Group (If your environment has not already provided this).
+    : *<span class="underline">hol-andrew-rg</span>*
+
+2.  Azure Storage Account :
+    <span class="underline">*holandrewstorage*</span> – For storage name
+    only alphanumeric is allow.
+
+3.  Azure Databricks workspace :
+    *<span class="underline">hol-andrew-databricks</span>*
+
+#### Task1: Install Azure Storage Explorer
+
+Microsoft Azure Storage Explorer is a standalone app that makes it easy
+to work with Azure Storage data on Windows, macOS, and Linux (Azure Docs
+on Storage Explorer
+[here](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows))
+
+1)  Download Azure Storage Explorer from [this
+    page](https://azure.microsoft.com/en-us/features/storage-explorer/)
+
+2)  Install Azure Storage Explorer
+
+3)  Click the Open Connect dialog
+
+4)  Select “Add an Azure account” and continue logging in to your Azure
+    account.
+
+5)  Once you log in you can see a list of your storage accounts.
+
+![](.//media/image2.png)
+
+![](.//media/image3.png)
+
+![](.//media/image4.png)
+
+#### Task2: Clone the GitHub repository
+
+Clone this GitHub repository to your machine or download the source Zip
+file of this repo
+
+![](.//media/image5.png)
+
+#### Task3: Deploy Azure Resource Group
+
+1)  Search for Resource groups from the main search bar in Azure portal
+
+![](.//media/image6.png)
+
+2)  Click Add
+
+![](.//media/image7.png)
+
+1)  **For Resource group name: hol-\<your name\>-rg for example:
+    hol-john-rg**
+
+#### ![](.//media/image8.png)
+
+#### Task4: Deploy an Azure Storage Account as below
+
+1)  Search for Storage Accounts
+
+2)  Click Add
+
+3)  Provide subscription, resource group
+
+4)  **For Storage account name: hol\<your name\>storage for example:
+    holjohnstorage**
+
+5)  Select Location
+
+6)  For Account Kind Storage V2
+
+7)  **For Replication change to LRS**
+
+8)  Click “Review + Create” and then “Create”
+
+> ![](.//media/image9.png)
